@@ -2,10 +2,11 @@ import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
 import authentication from '@/middleware/authentication';
-import ErrorLayout from '@/layouts/error.vue';
 
 Vue.use(VueRouter)
-
+/**
+ * layout: DefaultLayout, BlankLayout, ErrorLayout
+ */
 const routes: Array<RouteConfig> = [
   {
     path: '/',
@@ -13,7 +14,8 @@ const routes: Array<RouteConfig> = [
     component: Home,
     meta: {
       middleware: [authentication],
-      layout: 'default',
+      layout: 'DefaultLayout',
+      bodyClass: 'page-home'
     }
   },
   {
@@ -22,12 +24,23 @@ const routes: Array<RouteConfig> = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    meta: {
+      layout: 'BlankLayout',
+      bodyClass: 'page-about'
+    }
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Contact.vue'),
   },
   {
     path: '/*',
     name: 'ErrorLayout',
-    component: ErrorLayout,
+    meta: {
+      layout: 'ErrorLayout',
+    }
   },
 ]
 

@@ -2,9 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import DefaultLayout from '@/layouts/default.vue';
+// import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
-Vue.component('DefaultLayout', DefaultLayout)
+// Vue.component('DefaultLayout', DefaultLayout)
 
 Vue.config.productionTip = false
 
