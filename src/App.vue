@@ -27,6 +27,7 @@ export default Vue.extend({
   created() {    
     if (this.$route.meta?.layout !== undefined) {
       this.layout = this.$route.meta.layout;
+      this.setBodyClass(this.$route.meta.bodyClass)
     } else {
       this.layout = 'DefaultLayout';
     }
@@ -59,9 +60,9 @@ export default Vue.extend({
     }
 
   },
-  destroyed() {
-    // document.body.classList.remove(this.$route.meta?);
-  }
+  // destroyed() {
+  //   this.removeBodyClass(this.$route.meta?.bodyClass);
+  // }
 })
 </script>
 
